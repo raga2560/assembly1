@@ -9,7 +9,10 @@ var url = contract.contractorurl;
 function getApi(api_endpoint, param, callback) {
     console.log('Get from:'+api_endpoint+'/'+param)
     console.log(url);    
-    request.get(url + '/api/vendor/getPair/'+contract.vendorid, function (error, response, body) {
+    var vendordata = {
+        vendorid: contract.vendorid
+    };
+    request.post(url + '/api/relation/createRelation', JSON.stringify(vendordata), function (error, response, body) {
         if (error) {
             return callback(error)
         }

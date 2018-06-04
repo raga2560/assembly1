@@ -14,8 +14,23 @@ exports.getRelations = function(req, res, next){
 
 }
 
-exports.createRelation = function(req, res, next){
 
+
+exports.createRelation = function(req, res, next){
+  var length = 10;
+  var c1 = {
+       vendorid: req.body.vendor_id,
+        serverdata: 'has addresses of conractor and vendor ',
+        pairid:  Math.random().toString(36).substr(2, length),
+        clientdata: 'has addresses of conractor and vendor ',
+        pinhash: 'contract.pinhash',
+        contractorid: 'contract.contractorid',
+        validatorhash: 'contract.validatorhash',
+
+    };
+
+        res.json(c1);
+/*
     Relation.create({
         pairid : 'req.body.title',
         serverdata : 'req.body.description',
@@ -38,7 +53,7 @@ exports.createRelation = function(req, res, next){
         });
 
     });
-
+*/
 }
 
 exports.deleteRelation = function(req, res, next){
@@ -63,7 +78,7 @@ exports.getRelation = function(req, res, next){
     });
 }
 
-exports.relationPause = function(req, res, next){
+exports.relationPauseActivate = function(req, res, next){
 
     Relation.update({
         _id : req.params.pair_id

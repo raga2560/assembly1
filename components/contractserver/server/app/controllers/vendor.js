@@ -78,7 +78,7 @@ exports.getVendor = function(req, res, next){
     });
 }
 
-exports.vendorPause = function(req, res, next){
+exports.vendorPauseActivate = function(req, res, next){
 
     Vendor.update({
         _id : req.params.vendor_id

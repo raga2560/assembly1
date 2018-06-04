@@ -129,3 +129,27 @@ exports.downloadPair = function(req, res, next){
     });
 }
 
+exports.downloadServerPair = function(req, res, next){
+
+    Manager.find({
+        _id : req.params.pair_id
+    }, function(err, pair) {
+        if (err){
+                res.send(err);
+        }
+        res.json(pair);
+    });
+}
+
+exports.downloadClientPair = function(req, res, next){
+
+    Manager.find({
+        _id : req.params.pair_id
+    }, function(err, pair) {
+        if (err){
+                res.send(err);
+        }
+        res.json(pair);
+    });
+}
+

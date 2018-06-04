@@ -36,20 +36,24 @@ module.exports = function(app){
 
 // Below relation is to ensure, checking of relations
 apiRoutes.use('/relation', relationRoutes);
+// below not needed i think
+/*
     relationRoutes.post('/vendor/:vendor_id', requireAuth, AuthenticationController.roleAuthorization(['creator']), RelationController.createRelation);
     relationRoutes.post('/relationinit', requireAuth, AuthenticationController.roleAuthorization(['creator']), RelationController.relationInitialise);
-    relationRoutes.post('/relationpause', requireAuth, AuthenticationController.roleAuthorization(['creator']), RelationController.relationPause);
-    relationRoutes.get('/:relation_id', requireAuth, AuthenticationController.roleAuthorization(['creator']), RelationController.getRelations);
+*/
+
+    relationRoutes.post('/relationpauseactivate', requireAuth, AuthenticationController.roleAuthorization(['creator']), RelationController.relationPauseActivate);
+    relationRoutes.get('/:relation_id', requireAuth, AuthenticationController.roleAuthorization(['creator']), RelationController.getRelation);
+    relationRoutes.get('/getRelations', requireAuth, AuthenticationController.roleAuthorization(['creator']), RelationController.getRelations);
+    relationRoutes.post('/createRelation',  RelationController.createRelation); // to be changed later to relation
 
 
 apiRoutes.use('/vendor', vendorRoutes);
-    vendorRoutes.post('/', requireAuth, AuthenticationController.roleAuthorization(['creator']), VendorController.createVendor);
-    vendorRoutes.post('/vendorinit', requireAuth, AuthenticationController.roleAuthorization(['creator']), VendorController.vendorInitialise);
-    vendorRoutes.post('/vendorpause', requireAuth, AuthenticationController.roleAuthorization(['creator']), VendorController.vendorPause);
-    vendorRoutes.get('/', requireAuth, AuthenticationController.roleAuthorization(['reader','creator','editor']), VendorController.getVendors);
-    vendorRoutes.get('/getPair/:vendor_id',  VendorController.getPair);
-    vendorRoutes.get('delete/:vendor_id', requireAuth, AuthenticationController.roleAuthorization(['reader','creator','editor']), VendorController.deleteVendor);
-    vendorRoutes.get('download/:vendor_id', requireAuth, AuthenticationController.roleAuthorization(['reader','creator','editor']), VendorController.downloadVendor);
+    vendorRoutes.post('/createVendor', requireAuth, AuthenticationController.roleAuthorization(['creator']), VendorController.createVendor);
+    vendorRoutes.post('/pauseactivate', requireAuth, AuthenticationController.roleAuthorization(['creator']), VendorController.vendorPauseActivate);
+    vendorRoutes.get('/getVendors', requireAuth, AuthenticationController.roleAuthorization(['reader','creator','editor']), VendorController.getVendors);
+    vendorRoutes.get('/delete/:vendor_id', requireAuth, AuthenticationController.roleAuthorization(['reader','creator','editor']), VendorController.deleteVendor);
+    vendorRoutes.get('/getVendor/:vendor_id', requireAuth, AuthenticationController.roleAuthorization(['reader','creator','editor']), VendorController.getVendor);
 
     // Set up routes
     app.use('/api', apiRoutes);
