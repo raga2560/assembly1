@@ -1,0 +1,42 @@
+<!--
+  Generated template for the DroneLockPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Drone Lock</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list  inset padding>
+        <ion-item>
+            <p> Unlock drone, by giving GPS location </p>
+        </ion-item>
+        <ion-item>
+            <ion-input type="text" placeholder="Device id"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input type="text" placeholder="Enter secret"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input type="number" placeholder="Longitude "></ion-input>
+            <button item-right ion-button color="primary">Validate</button>
+        </ion-item>
+        <ion-item>
+            <ion-input type="number" placeholder="Latitude"></ion-input>
+            <button clear item-right ion-button>Validate</button>
+        </ion-item>
+        <ion-item>
+            <button item-left ion-button>Upload device data</button>
+            <a item-right ion-button  href="">Unlock device </a>
+        </ion-item>
+   </ion-list>
+
+</ion-content>

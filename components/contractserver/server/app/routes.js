@@ -47,6 +47,7 @@ apiRoutes.use('/vendor', vendorRoutes);
     vendorRoutes.post('/vendorinit', requireAuth, AuthenticationController.roleAuthorization(['creator']), VendorController.vendorInitialise);
     vendorRoutes.post('/vendorpause', requireAuth, AuthenticationController.roleAuthorization(['creator']), VendorController.vendorPause);
     vendorRoutes.get('/', requireAuth, AuthenticationController.roleAuthorization(['reader','creator','editor']), VendorController.getVendors);
+    vendorRoutes.get('/getPair/:vendor_id',  VendorController.getPair);
     vendorRoutes.get('delete/:vendor_id', requireAuth, AuthenticationController.roleAuthorization(['reader','creator','editor']), VendorController.deleteVendor);
     vendorRoutes.get('download/:vendor_id', requireAuth, AuthenticationController.roleAuthorization(['reader','creator','editor']), VendorController.downloadVendor);
 

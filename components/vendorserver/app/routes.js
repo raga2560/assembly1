@@ -36,7 +36,8 @@ module.exports = function(app){
     todoRoutes.delete('/:todo_id', requireAuth, AuthenticationController.roleAuthorization(['editor']), TodoController.deleteTodo);
 
     apiRoutes.use('/manager', manageRoutes);
-    manageRoutes.post('/', requireAuth, AuthenticationController.roleAuthorization(['creator']), ManagerController.createPair);
+    //manageRoutes.post('/', requireAuth, AuthenticationController.roleAuthorization(['creator']), ManagerController.createPair);
+    manageRoutes.post('/createPair', ManagerController.createPair);
     manageRoutes.post('/serverinit', requireAuth, AuthenticationController.roleAuthorization(['creator']), ManagerController.serverInitialise);
     manageRoutes.post('/clientinit', requireAuth, AuthenticationController.roleAuthorization(['reader']), ManagerController.clientInitialise);
     manageRoutes.get('/', requireAuth, AuthenticationController.roleAuthorization(['reader','creator','editor']), ManagerController.getPairs);

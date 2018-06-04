@@ -6,50 +6,46 @@ var ManagerSchema = new mongoose.Schema({
 		type: String,
 		lowercase: true,
 		unique: true,
-		required: true
+                required: true
 	},
 	serverdata: {
 		type: String,
 		lowercase: true,
-		required: true
+                required: true
 	},
 	clientdata: {
 		type: String,
 		lowercase: true,
-		required: true
+                required: true
 	},
 	activate: {
 		type: Boolean,
-		required: true,
 		default: false
 	},
 	deactivated: {
 		type: Boolean,
-		required: true,
 		default: false
 	},
-	pin: {
+	pinhash: {
 		type: String,
-		required: true
+                required: true
 	},
 	pairtype: {
 		type: String,
 		default: 'couponpair101',
-		required: true
 	},
-	vendor: {
+	vendorid: {
 		type: String,
-		required: true
+                required: true
 	},
-	contractor: {
-		type: String,
-		default: '',
-		required: true
-	},
-	validationhash: {
+	contractorid: {
 		type: String,
 		default: '',
-		required: true
+	},
+	validatorhash: {
+		type: String,
+		default: '',
+                required: true
 	},
 	role: {
 		type: String,
@@ -61,12 +57,13 @@ var ManagerSchema = new mongoose.Schema({
 	timestamps: true
 });
 
+/*
 ManagerSchema.pre('save', function(next){
 
-	var coupon = this;
+	var manager = this;
 	var SALT_FACTOR = 5;
+        return next();
 // Check coupon is proper;
-/*
 	if(!user.isModified('password')){
 		return next();
 	} 
@@ -89,10 +86,10 @@ ManagerSchema.pre('save', function(next){
 		});
 
 	});
-  */
 
 });
 
+  */
 ManagerSchema.methods.getPIN = function(passwordAttempt, cb){
 
 /*

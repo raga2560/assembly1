@@ -13,7 +13,22 @@ exports.getVendors = function(req, res, next){
     });
 
 }
+exports.getPair = function(req, res, next){
+  var length = 10;
+  var c1 = {
+       vendorid: req.params.vendor_id,
+        serverdata: 'has addresses of conractor and vendor ',
+        pairid:  Math.random().toString(36).substr(2, length),
+        clientdata: 'has addresses of conractor and vendor ',
+        pinhash: 'contract.pinhash',
+        contractorid: 'contract.contractorid',
+        validatorhash: 'contract.validatorhash',
 
+    };
+
+        res.json(c1);
+
+}
 exports.createVendor = function(req, res, next){
 
     Vendor.create({
