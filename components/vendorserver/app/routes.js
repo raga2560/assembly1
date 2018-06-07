@@ -60,6 +60,7 @@ module.exports = function(app){
     couponRoutes.post('/activate/', requireAuth, AuthenticationController.roleAuthorization(['creator','editor']), CouponController.activateCoupon);
     couponRoutes.post('/getCoupon/:coupon_id', requireAuth, AuthenticationController.roleAuthorization(['creator', 'reader','editor']), CouponController.getCoupon);
     couponRoutes.post('/redeem/:coupon_id', requireAuth, AuthenticationController.roleAuthorization(['reader']), CouponController.redeemCoupon);
+    couponRoutes.post('/validate/:coupon_id', requireAuth, AuthenticationController.roleAuthorization(['reader']), CouponController.validateCoupon);
 
     // Set up routes
     app.use('/api', apiRoutes);

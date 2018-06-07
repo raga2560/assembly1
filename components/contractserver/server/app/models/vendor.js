@@ -9,8 +9,11 @@ var VendorSchema = new mongoose.Schema({
 		required: true
 	},
 	vendordata: {
-		type: String,
-		lowercase: true,
+		type: Schema.Types.Mixed,
+		required: true
+	},
+	contract: {
+		type: Schema.Types.Mixed,
 		required: true
 	},
 	clientdata: {
@@ -37,9 +40,13 @@ var VendorSchema = new mongoose.Schema({
 		default: 'vendor101',
 		required: true
 	},
-	vendor: {
+	contractorincomeaddress: {
 		type: String,
-		required: true
+		default: ''
+	},
+	contractorspendingaddress: {
+		type: String,
+		default: ''
 	},
 	validationhash: {
 		type: String,

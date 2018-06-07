@@ -16,10 +16,24 @@ exports.getPairs = function(req, res, next){
 
 }
 
+function vendordata(vend)
+{
+    return {
+	vendorid: contract.vendorid,
+	planname: vend.planname,
+	planid: vend.planid,
+	vendorincomeaddress: vend.vendorincomeaddress,
+	vendorspendingaddress: vend.vendorspendingaddress,
+        checksum: contract.PIN
+        
+    };
+}
 exports.createPair = function(req, res, next){
-
-    var vendor_data = 2; 
-    Contractor.getPair(contract.vendorid, function(err, pairdatasent) {
+    
+   
+    var vendor_data = vendordata(req.body);
+    
+    Contractor.getPair(vendor_data, function(err, pairdatasent) {
  
     console.log("pairdata="+pairdata);
     var pairdata = JSON.parse(pairdatasent);
@@ -50,7 +64,7 @@ exports.createPair = function(req, res, next){
         	res.send(err);
         }
         else { 
-        Manager.find(function(err, pairs) {
+        Manager.find( {_id:pair._id}, function(err, pair) {
 
             if (err){
                 console.log("Manager find error: "+ err);
@@ -58,7 +72,7 @@ exports.createPair = function(req, res, next){
             }
             else {
                 
-            res.json(pairs);
+            res.json(pair);
             }
 
         });

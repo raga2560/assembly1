@@ -6,12 +6,9 @@ var address = '2N43g2SV2PRp3FJUZ92NHDYY36QckV6mSP9'
 //var url = 'https://live.blockcypher.com/btc-testnet/address/';
 var url = contract.contractorurl;
 
-function getApi(api_endpoint, param, callback) {
-    console.log('Get from:'+api_endpoint+'/'+param)
+function getApi(api_endpoint, vendordata, callback) {
     console.log(url);    
-    var vendordata = {
-        vendorid: contract.vendorid
-    };
+
     request.post(url + '/api/relation/createRelation', JSON.stringify(vendordata), function (error, response, body) {
         if (error) {
             return callback(error)
@@ -27,7 +24,7 @@ function getApi(api_endpoint, param, callback) {
 
 exports.getPair = function (vendordata, callback) {
 
-        getApi("addr", "agag", function(err, body) {
+        getApi("getplan", vendordata, function(err, body) {
 
         if (err) {
 

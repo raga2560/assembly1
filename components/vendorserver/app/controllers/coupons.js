@@ -70,6 +70,14 @@ exports.redeemCoupon = function(req, res, next){
 
 }
 
+exports.vaidateCoupon = function(req, res, next){
+
+    Coupon.update({
+        _id : req.params.coupon_id
+    }, function(err, coupon) {
+        res.json(coupon);
+    });
+}
 
 exports.getCoupon = function(req, res, next){
 

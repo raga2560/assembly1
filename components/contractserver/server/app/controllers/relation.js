@@ -17,38 +17,35 @@ exports.getRelations = function(req, res, next){
 
 
 exports.createRelation = function(req, res, next){
+
   var length = 10;
-  var c1 = {
+  var pairdata = {
        vendorid: req.body.vendor_id,
         serverdata: 'has addresses of conractor and vendor ',
-        pairid:  Math.random().toString(36).substr(2, length),
+        pairid:  'rel_'+Math.random().toString(36).substr(2, length),
         clientdata: 'has addresses of conractor and vendor ',
         pinhash: 'contract.pinhash',
         contractorid: 'contract.contractorid',
         validatorhash: 'contract.validatorhash',
-
+        done: false
     };
 
-        res.json(c1);
-/*
-    Relation.create({
-        pairid : 'req.body.title',
-        serverdata : 'req.body.description',
-        clientdata: 'req.body.rating',
-        done : false
-    }, function(err, pair) {
+//        res.json(c1);
+
+    Relation.create( pairdata
+    , function(err, pair) {
 
         if (err){
         	res.send(err);
         }
        
-        Relation.find(function(err, relations) {
+        Relation.find( {_id: pair._id}, function(err, relation) {
 
             if (err){
             	res.send(err);
             }
                 
-            res.json(relations);
+            res.json(relation);
 
         });
 

@@ -1,4 +1,5 @@
 var Vendor = require('../models/vendor');
+var contractorconfig = require('../config/contractor.json');
 
 exports.getVendors = function(req, res, next){
 
@@ -13,28 +14,23 @@ exports.getVendors = function(req, res, next){
     });
 
 }
-exports.getPair = function(req, res, next){
-  var length = 10;
-  var c1 = {
-       vendorid: req.params.vendor_id,
-        serverdata: 'has addresses of conractor and vendor ',
-        pairid:  Math.random().toString(36).substr(2, length),
-        clientdata: 'has addresses of conractor and vendor ',
-        pinhash: 'contract.pinhash',
-        contractorid: 'contract.contractorid',
-        validatorhash: 'contract.validatorhash',
 
-    };
-
-        res.json(c1);
-
-}
 exports.createVendor = function(req, res, next){
 
+    // Check vendor details, allocate a vendorid
+    var length = 5;
+
+    // assumining vendor data is validated before coming here
+    // everytime we get new one, can only be modified in anothe routine
+   
+    // refer http://mongoosejs.com/docs/schematypes.html for mixed types
+
     Vendor.create({
-        vendorid : 'req.body.title',
-        serverdata : 'req.body.description',
-        clientdata: 'req.body.rating',
+        vendorid : 'ven_'+Math.random().toString(36).substr(2, length),
+        vendordata: { any: req.body.vendor},
+        contractincomeaddress :  contractorconfig.contractincomeaddress ,
+        contractspendingaddress :  contractorconfig.contractincomeaddress ,
+        contractorid: contractorconfig.contractorid
         done : false
     }, function(err, vendor) {
 
