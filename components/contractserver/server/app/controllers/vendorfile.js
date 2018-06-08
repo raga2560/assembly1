@@ -1,7 +1,7 @@
-var contractorconfig = require('../config/contractor.json');
+var contractorconfig = require('../../config/contractor.json');
 
 
-var vendorfiledir = contractconfig.vendorfiledir;
+var vendorfiledir = contractorconfig.vendorfiledir;
 
 function writedata(file, output)
 {

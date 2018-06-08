@@ -1,6 +1,6 @@
 var Vendor = require('../models/vendor');
-var Vendorfile = require('vendorfile');
-var contractorconfig = require('../config/contractor.json');
+var Vendorfile = require('./vendorfile');
+var contractorconfig = require('../../config/contractor.json');
 
 exports.getVendors = function(req, res, next){
 
@@ -54,7 +54,7 @@ function getvendorfilename(vendorid)
 var vendorfiledir = contractconfig.vendorfiledir;
 
 
- return vendorfiledir + "/"+ vendorid+".json",
+ return vendorfiledir + "/"+ vendorid+".json";
 }
 
 exports.createVendor = function(req, res, next){
@@ -77,7 +77,7 @@ exports.createVendor = function(req, res, next){
         vendorsecret: vendorsecret,
         contract :  contract,
         vendorfilename :  vendorfilename,
-        contractorid: contractorconfig.contractorid
+        contractorid: contractorconfig.contractorid,
         done : false
     }, function(err, vendor) {
 
@@ -85,7 +85,7 @@ exports.createVendor = function(req, res, next){
         	res.send(err);
         }
        
-        Vendor.find({{_id:vendor_id}, function(err, vendor) {
+        Vendor.find({_id:vendor_id}, function(err, vendor) {
 
             if (err){
             	res.send(err);

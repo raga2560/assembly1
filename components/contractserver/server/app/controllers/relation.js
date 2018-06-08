@@ -101,7 +101,7 @@ exports.createRelation = function(req, res, next){
         });
 
     });
-*/
+
 }
 
 exports.deleteRelation = function(req, res, next){

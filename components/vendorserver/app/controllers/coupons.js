@@ -70,7 +70,7 @@ exports.redeemCoupon = function(req, res, next){
 
 }
 
-exports.vaidateCoupon = function(req, res, next){
+exports.validateCoupon = function(req, res, next){
 
     Coupon.update({
         _id : req.params.coupon_id

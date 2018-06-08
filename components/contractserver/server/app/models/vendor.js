@@ -9,15 +9,15 @@ var VendorSchema = new mongoose.Schema({
 		required: true
 	},
 	vendordata: {
-		type: Schema.Types.Mixed,
+		type: mongoose.Schema.Types.Mixed,
 		required: true
 	},
 	contract: {
-		type: Schema.Types.Mixed,
+		type: mongoose.Schema.Types.Mixed,
 		required: true
 	},
 	vendorsecret: {
-		type: Schema.Types.Mixed,
+		type: mongoose.Schema.Types.Mixed,
 		required: true
 	},
 	activate: {
