@@ -18,6 +18,15 @@ var RelationSchema = new mongoose.Schema({
 		lowercase: true,
 		required: true
 	},
+        contractorincomeaddress: {
+                type: String,
+                default: ''
+        },
+        contractorspendingaddress: {
+                type: String,
+                default: ''
+        },
+
 	activate: {
 		type: Boolean,
 		required: true,

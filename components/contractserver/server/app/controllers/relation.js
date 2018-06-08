@@ -14,9 +14,60 @@ exports.getRelations = function(req, res, next){
 
 }
 
+function validatevendor(vendor)
+{
+   var validation = {
+       enabled: true,
+       secret: 'valid',
+       history: 'fine'
+   };
+    
+   return validation;
 
+}
+
+
+function validateplan(vendor, storedvendor)
+{
+  // check if this vendor is allowe for this plan
+
+  // 1monthplan
+  // 5monthplan
+  // 1kplan
+  // 10kplan
+
+  // check in database, if vendorplan matches, the creation request
+  // to be done nater
+  // no need to check also, because it is taken from secret file of vendor
+
+   var validation = {
+       allow: true
+   };
+    
+   return validation;
+}
 
 exports.createRelation = function(req, res, next){
+
+  var validation =   validatevendor(req.body);
+  if(validation.allow == false)
+  {
+     var err = {
+        error: "vendor not allowed"
+     }; 
+     return res.status(1000).send(err);
+  }
+
+  var planvalidation =  validateplan(vendor, req.populatatedvendor)
+  if(planvalidation.allow == false)
+  {
+     var err = {
+        error: "vendor plan not matching "
+     }; 
+     return res.status(1001).send(err);
+  }
+
+  // plan validation can be done later
 
   var length = 10;
   var pairdata = {

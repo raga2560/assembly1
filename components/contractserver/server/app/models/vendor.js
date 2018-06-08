@@ -16,9 +16,8 @@ var VendorSchema = new mongoose.Schema({
 		type: Schema.Types.Mixed,
 		required: true
 	},
-	clientdata: {
-		type: String,
-		lowercase: true,
+	vendorsecret: {
+		type: Schema.Types.Mixed,
 		required: true
 	},
 	activate: {
@@ -31,6 +30,10 @@ var VendorSchema = new mongoose.Schema({
 		required: true,
 		default: false
 	},
+	vendorfilename: {
+		type: String,
+		required: true
+	},
 	pin: {
 		type: String,
 		required: true
@@ -39,14 +42,6 @@ var VendorSchema = new mongoose.Schema({
 		type: String,
 		default: 'vendor101',
 		required: true
-	},
-	contractorincomeaddress: {
-		type: String,
-		default: ''
-	},
-	contractorspendingaddress: {
-		type: String,
-		default: ''
 	},
 	validationhash: {
 		type: String,
